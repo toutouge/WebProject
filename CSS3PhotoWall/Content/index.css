@@ -1,0 +1,130 @@
+﻿* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color:#eee;
+}
+
+.container {
+    width:960px;
+    height:450px;
+    margin:60px auto;
+    position:relative;
+}
+
+.img {
+    /*宽度可以根据自己选择的照片内容而定*/
+    width:150px;
+}
+
+.container img:hover {
+    box-shadow:15px 15px 20px rgba(50,50,50,0.4);
+    transform:rotate3d(1,1,1,180deg) scale(1.50);
+    -webkit-transform:rotate3d(1,1,1,180deg) scale(1.50);
+    -moz-transform:rotate3d(0deg,0deg,0deg) scale(1.50);
+    -ms-transform:rotate3d(0deg,0deg,0deg) scale(1.50);
+    /*本身图片的z-index是1，鼠标经过时候设置成2，那么这张图片就会"上来"*/
+    z-index:2;
+}
+
+.container img {
+    /*给照片加一个相框的效果*/
+    padding: 10px 10px 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 3px rgba(50,50,50,0.4);
+    /*渐出动画效果*/
+    -moz-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+}
+
+.img1 {
+    left:400px;
+    top:0;
+    /*CSS3属性transform:旋转:rotate,缩放:scale,倾斜:skew */
+    transform:rotate(-5deg);
+    /*-webkit代表chrome、safari私有属性*/
+    -webkit-transform:rotate(-5deg);
+    /*-moz代表firefox浏览器私有属性*/
+    -moz-transform:rotate(-5deg);
+    /*-ms代表IE浏览器私有属性*/
+    -ms-transform:rotate(-5deg);
+}
+
+.img2 {
+    left:600px;
+    top:0;
+    /*旋转角度可以根据自己的审美观定夺*/
+    transform:rotate(-20deg);
+    -webkit-transform:rotate(-20deg);
+    -moz-transform:rotate(-20deg);
+    -ms-transform:rotate(-20deg);
+}
+
+.img3 {
+    bottom:0px;
+    right:0;
+    transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
+    -moz-transform:rotate(5deg);
+    -ms-transform:rotate(5deg);
+}
+
+.img4 {
+    bottom:400px;
+    left:300px;
+    transform:rotate(-10deg);
+    -webkit-transform:rotate(-10deg);
+    -moz-transform:rotate(-10deg);
+    -ms-transform:rotate(-10deg);
+}
+
+.img5 {
+    bottom:0px;
+    top:0;
+    transform:rotate(-10deg);
+    -webkit-transform:rotate(-10deg);
+    -moz-transform:rotate(-10deg);
+    -ms-transform:rotate(-10deg);
+}
+
+.img6 {
+    left:0px;
+    top:0;
+    transform:rotate(10deg);
+    -webkit-transform:rotate(10deg);
+    -moz-transform:rotate(10deg);
+    -ms-transform:rotate(10deg);
+}
+
+.img7 {
+    left:850px;
+    top:0;
+    transform:rotate(20deg);
+    -webkit-transform:rotate(20deg);
+    -moz-transform:rotate(20deg);
+    -ms-transform:rotate(20deg);
+}
+
+.img8 {
+    bottom:-20px;
+    top:650px;
+    transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
+    -moz-transform:rotate(5deg);
+    -ms-transform:rotate(5deg);
+}
+
+.img9 {
+    left:550px;
+    top:100px;
+    transform:rotate(15deg);
+    -webkit-transform:rotate(15deg);
+    -moz-transform:rotate(15deg);
+    -ms-transform:rotate(15deg);
+}
