@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EaselJS demo: hitTest</title>
+	<link href="../_shared/demo.css" rel="stylesheet" type="text/css">
+	<script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+	<script>
+		var stage, circle;
+		function init() {
+			stage = new createjs.Stage("demoCanvas");
+			
+			circle = stage.addChild(new createjs.Shape());
+			circle.graphics.beginFill("red").drawCircle(50,50,50);
+			circle.x = 0;
+			circle.y = 0;
+			
+			createjs.Ticker.on("tick", tick);
+		}
+		
+		function tick(event) {
+			circle.alpha = 0.2;
+			if (circle.hitTest(stage.mouseX, stage.mouseY)) { circle.alpha = 1; }
+			stage.update(event);
+		}
+	</script>
+</head>
+<body onload="init();">
+	<canvas id="demoCanvas" width="300" height="100">
+		alternate content
+	</canvas>
+</body>
+</html>

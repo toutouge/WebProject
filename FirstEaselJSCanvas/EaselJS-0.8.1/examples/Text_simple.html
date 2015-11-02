@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>EaselJS Example: Text</title>
+
+	<link href="../_assets/css/shared.css" rel="stylesheet" type="text/css"/>
+	<link href="../_assets/css/examples.css" rel="stylesheet" type="text/css"/>
+	<script src="../_assets/js/examples.js"></script>
+
+	<script src="../lib/easeljs-NEXT.combined.js"></script>
+	<!-- We also provide hosted minified versions of all CreateJS libraries.
+	  http://code.createjs.com -->
+
+<script id="editable">
+	var canvas;
+	var stage;
+
+	var txt;
+	var shape;
+	var count = 0;
+
+	function init() {
+		//find canvas and load images, wait for last image to load
+		canvas = document.getElementById("testCanvas");
+		stage = new createjs.Stage(canvas);
+
+		// Create a new Text object, and position it on stage:
+		txt = new createjs.Text("text on the canvas... 0!", "36px Arial", "#FFF");
+		txt.x = 100;
+		txt.y = 80;
+		txt.rotation = 20;
+		//txt.outline = true;
+		stage.addChild(txt);
+
+		// this shape will be the background for the text:
+		shape = new createjs.Shape();
+		shape.x = txt.x;
+		shape.y = txt.y;
+		shape.rotation = txt.rotation;
+		stage.addChildAt(shape, 0);
+
+		// we want to do some work before we update the canvas,
+		// otherwise we could use Ticker.addEventListener("tick", stage);
+		createjs.Ticker.setFPS(100);
+		createjs.Ticker.addEventListener("tick", tick);
+	}
+
+	function tick(event) {
+		count++;
+
+		// update the text:
+		txt.text = "text on the canvas... " + count + "!";
+
+		// draw a vector box of the appropriate width behind the text:
+		shape.graphics.clear().beginFill("#F00").drawRect(-10, -10, txt.getMeasuredWidth() + 20, 36 + 20);
+
+		// update the stage:
+		stage.update(event);
+	}
+
+</script>
+</head>
+
+<body onload="init();">
+
+<header class="EaselJS">
+	<h1>Text Sample</h1>
+
+	<p>Shows how to use <code>Text</code> elements, and <code>Text.getMeasuredWidth()</code>.
+	</p>
+</header>
+
+<div>
+	<canvas id="testCanvas" width="960" height="400"></canvas>
+</div>
+</body>
+</html>

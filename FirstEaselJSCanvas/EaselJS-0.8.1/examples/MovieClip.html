@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>EaselJS Example: MovieClips</title>
+
+	<link href="../_assets/css/shared.css" rel="stylesheet" type="text/css"/>
+	<link href="../_assets/css/examples.css" rel="stylesheet" type="text/css"/>
+	<script src="../_assets/js/examples.js"></script>
+</head>
+<body onload="init()">
+
+<header class="EaselJS">
+	<h1>MovieClip</h1>
+
+	<p>Demonstrates creating a <code>MovieClip</code> using JavaScript. Each
+		shape instance tweened, and then the tweens are
+		added to the <code>MovieClip.timeline</code>. The timeline can then be
+		controlled by JavaScript. Requires <code>TweenJS</code>.</p>
+</header>
+
+<div>
+	<canvas id="testCanvas" width="960" height="400"></canvas>
+</div>
+
+<script src="../lib/easeljs-NEXT.combined.js"></script>
+<!-- We also provide hosted minified versions of all CreateJS libraries.
+  http://code.createjs.com -->
+
+<!-- MovieClip is not included in the core library, and is dependent on TweenJS -->
+<script src="../_assets/libs/tweenjs-NEXT.min.js"></script>
+<script src="../lib/movieclip-NEXT.combined.js"></script>
+
+<script id="editable">
+	function init() {
+		var stage = new createjs.Stage("testCanvas");
+		createjs.Ticker.addEventListener("tick", stage);
+
+		// Create the MovieClip
+		var mc = new createjs.MovieClip(null, 0, true, {start: 0, middle: 40});
+		stage.addChild(mc);
+
+		// Create the States. Each state is just a circle shape.
+		var state1 = new createjs.Shape(
+				new createjs.Graphics().beginFill("#999999")
+						.drawCircle(100, 200, 50));
+		var state2 = new createjs.Shape(
+				new createjs.Graphics().beginFill("#6699FF")
+						.drawCircle(100, 200, 50));
+
+		// Create a tween for each shape, animating from one side to the other.
+		mc.timeline.addTween(
+				createjs.Tween.get(state1)
+						.to({x: 0}).to({x: 760}, 40).to({x: 0}, 40));
+		mc.timeline.addTween(
+				createjs.Tween.get(state2)
+						.to({x: 760}).to({x: 0}, 40).to({x: 760}, 40));
+
+		// Play the animation starting from the middle. See the MovieClip constructor above where the labels are specified.
+		mc.gotoAndPlay("middle");
+	}
+</script>
+
+</body>
+</html>

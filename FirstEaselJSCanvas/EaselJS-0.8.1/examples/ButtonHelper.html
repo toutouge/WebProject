@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>EaselJS Example: Rollovers and Drag & Drop</title>
+
+	<link href="../_assets/css/shared.css" rel="stylesheet" type="text/css"/>
+	<link href="../_assets/css/examples.css" rel="stylesheet" type="text/css"/>
+	<script src="../_assets/js/examples.js"></script>
+
+	<script src="../lib/easeljs-NEXT.combined.js"></script>
+
+	<script src="../_assets/libs/tweenjs-NEXT.min.js"></script>
+	<script src="../src/easeljs/display/MovieClip.js"></script>
+
+	<script src="../_assets/art/VectorButton.js"></script>
+
+<script id="editable">
+
+	var canvas, stage;
+
+	var mouseTarget;	// the display object currently under the mouse, or being dragged
+	var dragStarted;	// indicates whether we are currently in a drag operation
+	var offset;
+	var update = true;
+
+	function init() {
+		examples.showDistractor();
+
+		// create stage and point it to the canvas:
+		stage = new createjs.Stage("testCanvas");
+
+		// enable touch interactions if supported on the current device:
+		createjs.Touch.enable(stage);
+
+		// enable mouse over / out events, required for button rollovers
+		stage.enableMouseOver(10);
+
+		// load the source image:
+		var image = new Image();
+		image.src = "../_assets/art/spritesheet_button.png";
+		image.onload = handleImageLoad;
+	}
+
+	function handleImageLoad(evt) {
+		examples.hideDistractor();
+
+		// spritesheet "bitmap" button:
+		var spriteSheet = new createjs.SpriteSheet({
+													   images: [evt.target],
+													   frames: {width: 300, height: 100},
+													   animations: { out: 0, over: 1, down: 2 }
+												   });
+		var bitmapButton = new createjs.Sprite(spriteSheet, "up");
+		stage.addChild(bitmapButton).set({x: 50, y: 50});
+		var bitmapHelper = new createjs.ButtonHelper(bitmapButton);
+
+		// movieclip "vector" button:
+		var vectorButton = new lib.VectorButton();
+		stage.addChild(vectorButton).set({x: 400, y: 50});
+		var vectorHelper = new createjs.ButtonHelper(vectorButton);
+
+		bitmapButton.on("click", function () {
+			vectorHelper.enabled = !vectorHelper.enabled;
+			vectorButton.alpha = 0.5 + vectorHelper.enabled * 0.5;
+		});
+
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+</script>
+
+</head>
+
+<body onload="init();">
+<header class="EaselJS">
+	<h1>ButtonHelper Example</h1>
+
+	<p>Shows how to use a <code>ButtonHelper</code> with <code>Sprite</code> or
+		<code>MovieClip</code> instances (or anything with a
+		<code>gotoAndStop()</code> method). Clicking the bitmap button toggles
+		<code>enabled</code> on the vector <code>ButtonHelper</code></p>
+</header>
+
+<div>
+	<canvas id="testCanvas" width="960" height="400"></canvas>
+</div>
+</body>
+</html>

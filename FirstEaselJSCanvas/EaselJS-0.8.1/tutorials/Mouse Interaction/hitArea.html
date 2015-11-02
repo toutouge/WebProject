@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EaselJS demo: onClick</title>
+	<link href="../_shared/demo.css" rel="stylesheet" type="text/css">
+	<script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+	<script>
+		var stage;
+		function init() {
+			stage = new createjs.Stage("demoCanvas");
+			stage.enableMouseOver(10);
+			
+			var label1 = new createjs.Text("text without hitArea", "48px Arial", "#F00");
+			label1.x = label1.y = 10;
+			label1.alpha = 0.5;
+			
+			var label2 = new createjs.Text("text with hitArea", "48px Arial", "#00F");
+			label2.x = 10;
+			label2.y = 80;
+			label2.alpha = 0.5;
+			
+			// create a rectangle shape the same size as the text, and assign it as the hitArea
+			// note that it is never added to the display list.
+			var hit = new createjs.Shape();
+			hit.graphics.beginFill("#000").drawRect(0, 0, label2.getMeasuredWidth(), label2.getMeasuredHeight());
+			label2.hitArea = hit;
+		   
+		 	label1.on("mouseover", handleInteraction);
+			label2.on("mouseover", handleInteraction);
+			
+			label1.on("mouseout", handleInteraction);
+			label2.on("mouseout", handleInteraction);
+			
+			stage.addChild(label1, label2);
+			stage.update();   
+			createjs.Ticker.addEventListener("tick", stage);
+		}
+		
+		function handleInteraction(event) {
+		    event.target.alpha = (event.type == "mouseover") ? 1 : 0.5; 
+		}
+	</script>
+</head>
+<body onload="init();">
+	<canvas id="demoCanvas" width="500" height="150">
+		alternate content
+	</canvas>
+</body>
+</html>
