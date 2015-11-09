@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>滚动条分页特效</title>
+    <meta name="author" content="Victor Coulon">
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <ol class="curtains">
+        <!--<li id="section-1" class="cover" data-parallax-background="-.05">-->
+        <li id="section-1" class="cover">
+            <header data-fade="550" data-slow-scroll="3">
+                <h1>博客园</h1>
+                <h2>请叫我头头哥，请叫我头头哥</h2>
+            </header>
+        </li>
+        <li id="section-2">
+            <article>
+                <h4>博客园</h4>
+                <hr>
+                <p style="text-indent:2em;">
+                    博客园创建于2004年1月，博客园诞生于江苏扬州这样一个IT非常落后的小城市，
+                    城市虽小，但是这里却有很多求知创新的人，博客园诞生的理由是如此简单。
+                </p>
+                <p style="text-indent:2em;">
+                    一个IT技术人员想为IT技术人员们提供一个纯净的技术交流空间，博客园很长时间只有一个不能再简单的博客，
+                    有近四年，博客园仅靠一个人几年工作的积蓄在维持，互联网浪潮的此起彼伏，“博客”从耀眼的明星成为平民<br />
+                    ，这些似乎都与博客园无关，博客园一步一个脚印地走着自己的路，傻傻地对每个用户注册进行人工审批、
+                    对首页内容宁缺毋滥、对不合适的广告拒之门外，傻傻地对用户体验关怀备至，对盈利模式冷若冰霜。
+                </p>
+                <h4>发展历程</h4>
+                <hr>
+                <p>2006年9月 博客园到北京发展。</p>
+                <p>2007年9月 博客园来到上海发展。</p>
+                <p>2008年3月 博客园团队成立。</p>
+                <p></p>
+                <p class="align-center">
+                    <a href="http://www.cnblogs.com/" class="button">看看博客园</a>
+                </p>
+            </article>
+        </li>
+        <li id="section-3">
+            <section class="photos">
+                <div class="fixed">
+                    <h4>博客园</h4>
+                    <p>2005年12月中国博客服务商十强</p>
+                    <p>2006年4月 2006中国Web2.0值得关注的百家企业。</p>
+                    <p>2007年3月 2007年中国最具投资价值100网站</p>
+                </div>
+                <div class="photos-inner">
+                    <ul class="step-list">
+                        <li class="step">
+                            <img src="img/1.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/2.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/3.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/4.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/5.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/6.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/7.jpg" alt="">
+                        </li>
+                        <li class="step">
+                            <img src="img/8.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </li>
+        <li id="section-4">
+            <a href="http://www.cnblogs.com/toutou/">请叫我头头哥</a>
+        </li>
+    </ol>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    $(function(){
+       $('.curtains').curtain({
+           scrollSpeed: 300,
+           controls: '.menu',
+           curtainLinks: '.curtain-links',
+           nextSlide: function(){
+            console.log("ok");
+           }
+       });
+    });
+    </script>
+</body>
+</html>

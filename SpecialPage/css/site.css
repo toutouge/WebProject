@@ -1,0 +1,182 @@
+﻿/* Curtain.js - Example page */
+
+/* Google Font */
+@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Sans+Narrow:700|PT+Sans);
+
+
+/* RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+/* Clearfix */
+.cf:before,
+.cf:after { content:"";display:table; }
+.cf:after { clear:both; }
+.cf { zoom:1;}
+
+/* Base Style */
+body {
+    font:14px/1.6 'PT Serif', serif;
+    font-weight: 400;
+    color:#222;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3{font-family: 'PT Sans Narrow', sans-serif;font-weight:bold;text-transform: uppercase;}
+h4,h5,h6{font-family: 'PT Sans', sans-serif;font-weight:bold;}
+h4{ font-size:20px; margin:1em 0 0; }
+p{min-height:1px;}
+strong{font-weight:bold;}
+hr{background: #333;border: 0;height: 2px;margin: 12px auto 8px;width: 60px;}
+
+a{color:#1074ce;text-decoration:none;}
+a:hover{color:#0a487f;}
+
+article{
+    text-align:center;
+    padding:150px 0;
+    width:250px;
+    margin:0 auto;
+}
+
+    article h4:first-child{ margin:0; }
+    article p{ text-align:justify; }
+
+.button{
+    display:inline-block;
+    line-height:1;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 6px 8px;
+    background:#000;
+    color:#FFF;
+    margin:2em 0;
+}
+    .button:hover{
+        color:#FFF;
+        background-color:#444;
+    }
+    .button+.button{margin-left:1em;}
+
+.align-center{text-align: center;}
+
+
+
+/* Sliding panels */
+.curtains>li {
+    background:#FFF url(../img/blizzard.png);
+    box-shadow:0 0 12px #666;
+}
+    .curtains>li:last-child{box-shadow:none}
+
+/* MENU */
+#menu{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:20;
+    padding:10px;
+    background-color:#000;
+}
+    #menu li{margin:0}
+    #menu a{
+        margin:0;
+        color:#FFF;
+    }
+
+
+
+/* Section 1 */
+
+#section-1 {
+    background: url(../img/eiffel-2.jpg) 50% 0 no-repeat;
+    background-size: cover;
+}
+
+    #section-1 header{
+        color:#FFF;
+        position:absolute;
+        top:30%;
+        left:50%;
+        margin:0 0 0 -350px;
+        width:700px;
+        text-align:center;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+        line-height:1.1;
+    }
+
+    #section-1 h1{
+        font-size:120px;
+    }
+
+    #section-1 h2{
+        text-transform:capitalize;
+        opacity:.75;
+        font-size:48px;
+    }
+
+/* Section 2 */
+#section-2{
+}
+
+
+/* Section 3 */
+#section-3{
+    
+}
+    #section-3 .photos{
+        padding:150px 0;
+        width:620px;
+        margin-left:150px;
+    }
+        #section-3 .photos > :last-child{margin-bottom:0}
+
+        #section-3 .fixed{
+            position: fixed;
+            top: 150px;
+            left: 150px;
+            width: 200px;
+        }
+
+        #section-3 .photos-inner{
+            margin-left:220px;
+            width:400px;
+        }
+
+        #section-3  .photos-inner img{
+            display:block;
+            margin:0 0 4em 0;
+            max-width:100%;
+            background: #fff; 
+            border-radius: 1px; 
+            padding: 14px 14px 63px 14px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(0,0,0,.1); 
+        }
+
+html{
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.curtains{
+    width: 100%;
+    z-index:1;
+    position:relative;
+}
+
+.curtains>li{
+    -webkit-transform:translateZ(0);
+    background: white;
+    position: fixed;
+    display:block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index:1;
+}
+.curtains>li.hidden{display:none;}
+.curtains>li:first-child{z-index:2;}
