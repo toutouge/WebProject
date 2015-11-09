@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>汽车销量统计</title>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/raphael.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <style>
+        .get {
+            display: none;
+        }
+
+        #diagram {
+            float: left;
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="legend">
+            <h1>汽车销量:</h1>
+            <div class="skills">
+                <ul>
+                    <li class="jq">大众</li>
+                    <li class="css">丰田</li>
+                    <li class="html">别克</li>
+                    <li class="php">福特</li>
+                    <li class="sql">长安</li>
+                </ul>
+            </div>
+        </div>
+        <div id="diagram"></div>
+    </div>
+
+    <div class="get">
+        <div class="arc">
+            <span class="text">大众</span>
+            <input type="hidden" class="percent" value="95" />
+            <input type="hidden" class="color" value="#97BE0D" />
+        </div>
+        <div class="arc">
+            <span class="text">丰田</span>
+            <input type="hidden" class="percent" value="90" />
+            <input type="hidden" class="color" value="#D84F5F" />
+        </div>
+        <div class="arc">
+            <span class="text">别克</span>
+            <input type="hidden" class="percent" value="80" />
+            <input type="hidden" class="color" value="#88B8E6" />
+        </div>
+        <div class="arc">
+            <span class="text">福特</span>
+            <input type="hidden" class="percent" value="53" />
+            <input type="hidden" class="color" value="#BEDBE9" />
+        </div>
+        <div class="arc">
+            <span class="text">长安</span>
+            <input type="hidden" class="percent" value="45" />
+            <input type="hidden" class="color" value="#EDEBEE" />
+        </div>
+    </div>
+    <script>
+        var o = {
+            init: function () {
+                this.diagram();
+            },
+            random: function (l, u) {
+                return Math.floor((Math.random() * (u - l + 1)) + l);
+            },
+            diagram: function () {
+                var r = Raphael('diagram', 600, 600),
+                    rad = 73;
+
+                r.circle(300, 300, 85).attr({ stroke: 'none', fill: '#193340' });
+
+                var title = r.text(300, 300, 'loading...').attr({
+                    font: '20px Arial',
+                    fill: '#fff'
+                }).toFront();
+
+                r.customAttributes.arc = function (value, color, rad) {
+                    var v = 3.6 * value,
+                        alpha = v == 360 ? 359.99 : v,
+                        random = o.random(91, 240),
+                        a = (random - alpha) * Math.PI / 180,
+                        b = random * Math.PI / 180,
+                        sx = 300 + rad * Math.cos(b),
+                        sy = 300 - rad * Math.sin(b),
+                        x = 300 + rad * Math.cos(a),
+                        y = 300 - rad * Math.sin(a),
+                        path = [['M', sx, sy], ['A', rad, rad, 0, +(alpha > 180), 1, x, y]];
+                    return { path: path, stroke: color }
+                }
+
+                $('.get').find('.arc').each(function (i) {
+                    var t = $(this),
+                        color = t.find('.color').val(),
+                        value = t.find('.percent').val(),
+                        text = t.find('.text').text();
+
+                    rad += 30;
+                    var z = r.path().attr({ arc: [value, color, rad], 'stroke-width': 26 });
+
+                    z.mouseover(function () {
+                        this.animate({ 'stroke-width': 50, opacity: .75 }, 1000, 'elastic');
+                        if (Raphael.type != 'VML') //solves IE problem
+                            this.toFront();
+                        title.animate({ opacity: 0 }, 500, '>', function () {
+                            this.attr({ text: text + '\n' + value + '%' }).animate({ opacity: 1 }, 500, '<');
+                        });
+                    }).mouseout(function () {
+                        this.animate({ 'stroke-width': 26, opacity: 1 }, 1000, 'elastic');
+                    });
+                });
+            }
+        }
+
+        $(function () { o.init(); });
+    </script>
+</body>
+</html>
