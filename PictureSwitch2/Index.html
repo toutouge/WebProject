@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>索引图片切换</title>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jqFancyTransitions.1.8.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#slideshowHolder').jqFancyTransitions({
+                effect: '', // wave, zipper, curtain
+                width: 500, // width of panel
+                height: 700, // height of panel
+                strips: 20, // number of strips
+                delay: 5000, // delay between images in ms
+                stripDelay: 50, // delay beetwen strips in ms
+                titleOpacity: 0.7, // opacity of title
+                titleSpeed: 1000, // speed of title appereance in ms
+                position: 'alternate', // top, bottom, alternate, curtain
+                direction: 'fountainAlternate', // left, right, alternate, random, fountain, fountainAlternate
+                navigation: true, // prev and next navigation buttons
+                links: true // show images as links
+            });
+        });
+    </script>
+    <style>
+        .ft-prev, .ft-next {
+            background-color: #000;
+            padding: 0 10px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="slideshowHolder">
+        <img src="img/1.jpg" />
+        <img src="img/2.jpg" />
+        <img src="img/3.jpg" />
+    </div>
+</body>
+</html>
