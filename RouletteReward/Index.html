@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="jquery-ui.min.js"></script>
+	<script type="text/javascript" src="src/rouletteWheel.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			var itemsToShow = parseInt(4 + Math.random()*10);
+			console.log(itemsToShow);
+			var items = {};
+			for(var i=0; i < itemsToShow; i++){
+			    items[i] = (i+1) + '等奖 ';
+			}
+		  $('#canvas').rouletteWheel({
+		    items : items,
+		    selected : function(key, value){
+		      alert('恭喜您 : 抽中' + value);
+		    },
+		    spinText : '开始抽奖',
+		  });
+		});
+	</script>
+	<title>转盘抽奖</title>
+</head>
+<body>
+
+	<canvas id="canvas" width="500" height="500"></canvas>
+	
+</body>
+</html>
