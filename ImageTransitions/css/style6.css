@@ -1,0 +1,131 @@
+/*******************************************************/
+/******************* Other Effects *********************/
+/*******************************************************/
+
+.te-perspective{ 
+	-webkit-perspective: 1000;
+}
+.te-cover,
+.te-transition{
+	position: absolute;
+	width: 329px;
+	height: 425px;
+	top: 0px;
+	left: 0px;
+}
+.te-cover.te-hide,
+.te-transition,
+.te-images{ display: none; }
+.te-transition.te-show { display: block; }
+.te-back,
+.te-front{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.te-front{ z-index: 2; }
+.te-back{
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+}
+/***************** example1 ********************/
+.te-example1.te-show .te-front{
+	-webkit-animation: example1Front 0.6s linear forwards;
+}
+@-webkit-keyframes example1Front{
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+/***************** example2 ********************/
+.te-transition.te-example2 { overflow: hidden; }
+.te-example2.te-show .te-front,
+.te-example2.te-show .te-back{
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-fill-mode: forwards;
+}
+.te-example2.te-show .te-front{
+	-webkit-animation-name: example2Front;
+}
+.te-example2.te-show .te-back {
+	-webkit-animation-name: example2Back;
+}
+@-webkit-keyframes example2Front{
+	0% { -webkit-transform: translateX(0); }
+	100% { -webkit-transform: translateX(-329px); }
+}
+@-webkit-keyframes example2Back{
+	0% { -webkit-transform: translateX(329px); }
+	100% { -webkit-transform: translateX(0px); }
+}
+/***************** example3 ********************/
+.te-example3 .te-front{ z-index: 1; }
+.te-example3 .te-back{ z-index: 2; }
+.te-example3.te-show .te-back{
+	-webkit-animation: example3Back 0.4s ease-out forwards;
+}
+@-webkit-keyframes example3Back{
+	0% { -webkit-transform: rotate(40deg) scale(1.5) translate(200px,10px); opacity: 0; }
+	100% { -webkit-transform: rotate(0deg) scale(1) translate(0,0); opacity: 1; }
+}
+/***************** example4 ********************/
+.te-example4.te-show .te-front{
+	-webkit-animation: example4Front 0.8s ease-in-out forwards;
+}
+@-webkit-keyframes example4Front{
+	0% { -webkit-transform: translateX(0); z-index: 3;}
+	50% { -webkit-transform: rotateZ(-5deg) translateX(-339px); z-index: 3;}
+	51% { z-index: 1;}
+	100% { -webkit-transform: rotateZ(0deg) translateX(0px); z-index: 1;}
+}
+/***************** example5 ********************/
+.te-example5.te-show .te-front,
+.te-example5.te-show .te-back{
+	-webkit-animation-duration: 0.8s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-transform-origin: 0% 100%;
+}
+.te-example5.te-show .te-front{
+	-webkit-animation-name: example5Front;
+}
+.te-example5.te-show .te-back {
+	-webkit-animation-name: example5Back;
+}
+@-webkit-keyframes example5Front{
+	0% { z-index: 3;}
+	50% { -webkit-transform: rotateZ(-75deg); z-index: 3;}
+	51% { z-index: 1;}
+	100% { -webkit-transform: rotateZ(0deg); z-index: 1;}
+}
+@-webkit-keyframes example5Back{
+	0% { z-index: 1;}
+	50% { -webkit-transform: rotateZ(20deg); z-index: 1;}
+	51% { z-index: 3;}
+	100% { -webkit-transform: rotateZ(0deg); z-index: 3;}
+}
+/***************** example6 ********************/
+.te-example6.te-show .te-front{
+	-webkit-animation: example6Front 0.4s ease-in-out forwards;
+}
+@-webkit-keyframes example6Front{
+	0% { opacity:1; }
+	100% { -webkit-transform: rotateZ(3deg) scale(1.5); opacity:0; }
+}
+/***************** example7 ********************/
+.te-example7.te-show .te-front{
+	-webkit-transform-origin: 0% 100%;
+}
+.te-example7.te-show .te-front{
+	-webkit-animation: example7Front 1s ease-in-out forwards;
+}
+@-webkit-keyframes example7Front{
+	0% { z-index: 3; -webkit-animation-timing-function : ease-in }
+	20% { -webkit-transform: rotateZ(180deg); z-index: 3;-webkit-animation-timing-function : ease-out }
+	21% { z-index: 1; }	
+	40% { -webkit-transform: rotateZ(370deg); z-index: 1; }
+	60% { -webkit-transform: rotateZ(356deg); z-index: 1; }
+	80% { -webkit-transform: rotateZ(360deg); z-index: 1; }
+	95% { -webkit-transform: rotateZ(359deg); z-index: 1; }
+	100% { -webkit-transform: rotateZ(360deg); z-index: 1; }
+}

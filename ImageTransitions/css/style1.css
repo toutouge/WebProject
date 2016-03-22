@@ -1,0 +1,117 @@
+/*******************************************************/
+/***************** Flip Effects ************************/
+/*******************************************************/
+
+.te-transition,
+.te-cover.te-hide,
+.te-images { 
+	display: none; 
+}
+
+.te-perspective { 
+	-webkit-perspective: 1000px; 
+}
+
+.te-transition,
+.te-cover {
+	position: absolute;
+	width: 333px;
+	height: 430px;
+	top: 0px;
+	left: 0px;
+}
+
+.te-transition.te-show {
+	display: block;
+}
+
+.te-card,
+.te-back,
+.te-front {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.te-card {
+	-webkit-transform-style: preserve-3d;
+}
+
+.te-front, 
+.te-back { 
+	-webkit-backface-visibility: hidden; 
+}
+
+.te-back { 
+	-webkit-transform: rotate3d(1,0,0,-180deg);
+}
+
+
+/***************** Flip1 ********************/
+.te-flip1.te-show .te-card{
+	-webkit-animation: flip1 1s ease-in-out forwards;
+}
+@-webkit-keyframes flip1{
+	0% { 
+		-webkit-transform: rotate3d(1,0,0,0);
+	}
+	100% { 
+		-webkit-transform: rotate3d(1,0,0,-180deg); 
+	}
+}
+/****************** Flip2 *******************/
+.te-flip2.te-show .te-card{
+	-webkit-animation: flip2 1s ease-in-out forwards;
+	-webkit-transform-origin: 50% 0%;
+}
+@-webkit-keyframes flip2{
+	0% { 
+		-webkit-transform: rotate3d(1,0,0,0);
+	}
+	100% { 
+		-webkit-transform: rotate3d(1,0,0,-180deg) translate3d(0,-430px,0);
+	}
+}
+/****************** Flip3 *******************/
+.te-flip3 .te-back {
+	-webkit-transform: rotate3d(0,1,0,-180deg);
+}
+.te-flip3.te-show .te-card{
+	-webkit-animation: flip3 1s ease-in-out forwards;
+}
+@-webkit-keyframes flip3{
+	0% {
+		-webkit-transform: rotate3d(0,1,0,0);
+	}
+	50% {
+		-webkit-transform: rotate3d(0,1,0,-190deg);
+	}
+	70% {
+		-webkit-transform: rotate3d(0,1,0,-172deg);
+	}
+	80% {
+		-webkit-transform: rotate3d(0,1,0,-180deg);
+	}
+	95% {
+		-webkit-transform: rotate3d(0,1,0,-178deg);
+	}
+	100% { 
+		-webkit-transform: rotate3d(0,1,0,-180deg); 
+	}
+}
+/****************** Flip4 *******************/
+.te-flip4 .te-back{
+	-webkit-transform: rotate3d(0,1,0,-180deg);
+}
+.te-flip4.te-show .te-card{
+	-webkit-animation: flip4 1s ease-in-out forwards;
+	-webkit-transform-origin: 100% 50%;
+}
+@-webkit-keyframes flip4{
+	0% { 
+		-webkit-transform: rotate3d(0,1,0,0) ;
+	}
+	100% { 
+		-webkit-transform: rotate3d(0,1,0,-180deg) translate3d(333px,0,0); 
+	}
+}
