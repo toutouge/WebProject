@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lottery</title>
+    <link href="CSS/odometer-theme-car.css" rel="stylesheet" />
+    <script src="JS/jquery-1.10.2.js"></script>
+    <script src="JS/odometer.js"></script>
+    <style>
+        .odometer {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div><input type="button" id="start" value="摇一摇" /></div>
+    <!--111111111111是开始默认的号码-->
+    <div class="odometer">111111111</div>
+</body>
+</html>
+
+<script>
+    window.odometerOptions = {
+        format: 'd'
+    };
+
+    $("#start").click(function () {
+        setTimeout(function () {
+            $('.odometer').html(888888888);
+        }, 1);
+    });
+</script>
